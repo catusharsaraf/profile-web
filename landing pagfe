@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Tushar Saraf | Capital Markets & Investment Banking</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8974A;
+    --gold-light: #D4B06A;
+    --gold-dim: #8C7038;
+    --cream: #F9F6F0;
+    --ink: #1A1714;
+    --ink-mid: #3D3830;
+    --ink-soft: #6B6357;
+    --ink-muted: #9C9288;
+    --rule: rgba(184,151,74,0.22);
+    --rule-light: rgba(184,151,74,0.10);
+    --white: #FFFFFF;
+    --card-bg: rgba(255,255,255,0.7);
+    --card-border: rgba(184,151,74,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(249,246,240,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-brand span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 7rem 3rem 4rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 4rem;
+    position: relative;
+  }
+
+  .hero-left { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5.2rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    transition: background 0.25s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--gold-dim); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    border: 0.5px solid var(--ink);
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── HERO RIGHT / PHOTO ── */
+  .hero-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .photo-frame {
+    position: relative;
+    width: 380px;
+    height: 480px;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -16px; left: -16px;
+    width: 100%; height: 100%;
+    border: 0.5px solid var(--gold);
+    z-index: 0;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -16px; right: -16px;
+    width: 55%; height: 55%;
+    border: 0.5px solid var(--gold-dim);
+    z-index: 0;
+  }
+
+  .photo-frame img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    filter: grayscale(8%);
+  }
+
+  .photo-badge {
+    position: absolute;
+    bottom: -2rem;
+    left: -2.5rem;
+    z-index: 2;
+    background: var(--ink);
+    padding: 1rem 1.4rem;
+    border-left: 2px solid var(--gold);
+    color: var(--cream);
+  }
+
+  .photo-badge .badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--gold-light);
+  }
+
+  .photo-badge .badge-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(249,246,240,0.55);
+    margin-top: 0.2rem;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .section-heading em { font-style: italic; color: var(--gold); }
+
+  .section-sub {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 540px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--ink);
+    padding: 0;
+  }
+
+  .stats-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3.5rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border-right: 0.5px solid rgba(184,151,74,0.2);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(249,246,240,0.45);
+  }
+
+  /* ── EXPERTISE ── */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--rule);
+    border: 0.5px solid var(--rule);
+  }
+
+  .expertise-card {
+    background: var(--cream);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    cursor: default;
+  }
+
+  .expertise-card:hover { background: var(--white); }
+
+  .expertise-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1.25rem;
+    opacity: 0.75;
+  }
+
+  .expertise-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.01em;
+  }
+
+  .expertise-card p {
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .expertise-tag {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    font-weight: 500;
+  }
+
+  /* ── ABOUT ── */
+  .about-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-left {}
+
+  .about-right p {
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-right p:last-child { margin-bottom: 0; }
+
+  .about-right strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .credentials-list {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .credential-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .credential-bullet {
+    flex-shrink: 0;
+    width: 0.35rem;
+    height: 0.35rem;
+    background: var(--gold);
+    border-radius: 50%;
+    position: relative;
+    top: -0.1em;
+  }
+
+  .credential-text {
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .credential-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── SERVICES / WHAT I DO ── */
+  .services-section { background: var(--white); }
+
+  .services-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule-light);
+    border: 0.5px solid var(--rule-light);
+  }
+
+  .service-item {
+    background: var(--white);
+    padding: 2.5rem 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+
+  .service-item:hover { background: var(--cream); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--rule);
+    line-height: 0.9;
+    flex-shrink: 0;
+    letter-spacing: -0.03em;
+  }
+
+  .service-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-content p {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── CONNECT ── */
+  .connect-section {
+    background: var(--ink);
+    text-align: center;
+  }
+
+  .connect-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 7rem 3rem;
+  }
+
+  .connect-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .connect-label::before, .connect-label::after {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 0.5px;
+    background: var(--gold-dim);
+  }
+
+  .connect-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .connect-heading em { font-style: italic; color: var(--gold-light); }
+
+  .connect-sub {
+    font-size: 0.9rem;
+    color: rgba(249,246,240,0.45);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .connect-email {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--gold-dim);
+    padding-bottom: 0.2rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .connect-email:hover { color: var(--cream); }
+
+  /* ── SOCIAL ── */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1.5rem;
+    border: 0.5px solid rgba(184,151,74,0.3);
+    color: rgba(249,246,240,0.55);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: all 0.25s;
+    font-weight: 400;
+  }
+
+  .social-link:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    background: rgba(184,151,74,0.06);
+  }
+
+  .social-link svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #110F0D;
+    padding: 1.75rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.5px solid rgba(184,151,74,0.08);
+  }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(249,246,240,0.2);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── DIVIDER ── */
+  .ornament {
+    text-align: center;
+    color: var(--gold-dim);
+    font-size: 1rem;
+    letter-spacing: 0.5em;
+    padding: 0 3rem 1rem;
+    opacity: 0.5;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate {
+    opacity: 0;
+    animation: fadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .delay-1 { animation-delay: 0.15s; }
+  .delay-2 { animation-delay: 0.3s; }
+  .delay-3 { animation-delay: 0.45s; }
+  .delay-4 { animation-delay: 0.6s; }
+  .delay-5 { animation-delay: 0.75s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 6rem 1.5rem 3rem;
+      gap: 3rem;
+    }
+
+    .hero-desc { margin-left: auto; margin-right: auto; }
+    .hero-ctas { justify-content: center; }
+    .hero-eyebrow { justify-content: center; }
+
+    .photo-frame {
+      width: 280px;
+      height: 360px;
+    }
+
+    .photo-badge {
+      left: 0;
+      bottom: -1.5rem;
+    }
+
+    .stats-inner {
+      grid-template-columns: 1fr 1fr;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(3) { border-top: 0.5px solid rgba(184,151,74,0.2); }
+    .stat-item:nth-child(4) { border-right: none; border-top: 0.5px solid rgba(184,151,74,0.2); }
+
+    .section-inner { padding: 4rem 1.5rem; }
+
+    .expertise-grid { grid-template-columns: 1fr; }
+
+    .about-wrap { grid-template-columns: 1fr; gap: 3rem; }
+
+    .services-list { grid-template-columns: 1fr; }
+
+    .connect-inner { padding: 5rem 1.5rem; }
+
+    footer {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-name { font-size: 2.6rem; }
+    .photo-frame { width: 240px; height: 300px; }
+    .social-links { gap: 0.75rem; }
+    .social-link { padding: 0.6rem 1rem; font-size: 0.65rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">CA Tushar <span>Saraf</span></a>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow animate">Chartered Accountant · Capital Markets</div>
+    <h1 class="hero-name animate delay-1">
+      Tushar<br><em>Saraf</em>
+    </h1>
+    <p class="hero-title animate delay-2">Investment Banking & Capital Advisory</p>
+    <p class="hero-desc animate delay-3">
+      Bridging growth-stage companies and institutional capital — from early private rounds through to public markets. Specialising in PE/VC fundraises, SME & Main Board IPOs, Migrations, and FPOs.
+    </p>
+    <div class="hero-ctas animate delay-4">
+      <a href="#connect" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/><path d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/></svg>
+        Let's Connect
+      </a>
+      <a href="https://www.linkedin.com/in/catusharsaraf-finguide" target="_blank" class="btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn Profile
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right animate delay-3">
+    <div class="photo-frame">
+      <img src="/mnt/user-data/uploads/TUSHAR.pdf" alt="CA Tushar Saraf" onerror="this.style.background='#2a2520'; this.style.display='flex'; this.alt='TS';">
+      <div class="photo-badge">
+        <div class="badge-num">3+</div>
+        <div class="badge-label">Years of expertise</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Transactions Executed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">₹500Cr+</div>
+      <div class="stat-label">Capital Raised</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">PE/VC</div>
+      <div class="stat-label">Fundraise Advisory</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">IPO</div>
+      <div class="stat-label">SME & Main Board</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-inner">
+    <div class="section-label">Core Expertise</div>
+    <h2 class="section-heading">Where <em>Capital</em><br>Meets Strategy</h2>
+    <p class="section-sub">A focused practice spanning the full capital lifecycle — from structuring early-stage investment rounds to navigating complex public market transactions.</p>
+
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <svg class="expertise-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 32 L16 20 L24 26 L34 10" stroke="#B8974A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="20" r="2.5" fill="#B8974A"/>
+          <circle cx="24" cy="26" r="2.5" fill="#B8974A"/>
+          <circle cx="34" cy="10" r="2.5" fill="#B8974A"/>
+        </svg>
+        <h3>PE / VC Fundraising</h3>
+        <p>End-to-end advisory for growth-stage companies seeking private equity and venture capital. Investor targeting, pitch structuring, term sheet negotiation, and deal closure.</p>
+        <span class="expertise-tag">→ Growth Stage · Series A–D</span>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="expertise-icon" viewBox="0 0 40 40" fill="none">
+          <rect x="6" y="24" width="6" height="10" rx="1" fill="#B8974A" opacity="0.4"/>
+          <rect x="16" y="16" width="6" height="18" rx="1" fill="#B8974A" opacity="0.65"/>
+          <rect x="26" y="8" width="6" height="26" rx="1" fill="#B8974A"/>
+          <path d="M8 14 L20 8 L32 4" stroke="#B8974A" stroke-width="1" stroke-dasharray="2 2"/>
+        </svg>
+        <h3>SME & Main Board IPOs</h3>
+        <p>Full-spectrum IPO management — from DRHP structuring and regulatory filings to roadshows, anchor investor coordination, and listing. Experience across BSE SME, NSE Emerge, and Main Board.</p>
+        <span class="expertise-tag">→ BSE · NSE · SEBI Compliance</span>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="expertise-icon" viewBox="0 0 40 40" fill="none">
+          <circle cx="14" cy="20" r="9" stroke="#B8974A" stroke-width="1.2"/>
+          <circle cx="26" cy="20" r="9" stroke="#B8974A" stroke-width="1.2" opacity="0.5"/>
+          <path d="M19 14 Q23 20 19 26" stroke="#B8974A" stroke-width="1.2" fill="none"/>
+        </svg>
+        <h3>Migrations & FPOs</h3>
+        <p>Advisory on platform migrations from SME to Main Board, and Follow-on Public Offerings. Structuring, compliance management, and institutional investor engagement.</p>
+        <span class="expertise-tag">→ SME to Main Board · FPO</span>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="expertise-icon" viewBox="0 0 40 40" fill="none">
+          <path d="M8 8 L20 4 L32 8 L32 22 C32 28 20 36 20 36 C20 36 8 28 8 22 Z" stroke="#B8974A" stroke-width="1.2" fill="none"/>
+          <path d="M15 20 L18 23 L25 16" stroke="#B8974A" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Transaction Structuring</h3>
+        <p>Complex deal structuring across equity, debt, and hybrid instruments. Due diligence coordination, valuation advisory, and regulatory navigation for cross-market transactions.</p>
+        <span class="expertise-tag">→ Equity · Debt · Hybrid</span>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="expertise-icon" viewBox="0 0 40 40" fill="none">
+          <path d="M20 6 L20 34" stroke="#B8974A" stroke-width="1.2"/>
+          <path d="M10 18 C10 10 30 10 30 18 C30 26 10 26 10 18 Z" stroke="#B8974A" stroke-width="1.2" fill="none"/>
+          <circle cx="20" cy="12" r="2" fill="#B8974A"/>
+          <circle cx="20" cy="28" r="2" fill="#B8974A"/>
+        </svg>
+        <h3>Capital Markets Advisory</h3>
+        <p>Strategic advisory on capital allocation, market timing, instrument selection, and investor positioning. Building narratives that resonate with institutional and HNI investors.</p>
+        <span class="expertise-tag">→ Institutional · HNI</span>
+      </div>
+
+      <div class="expertise-card">
+        <svg class="expertise-icon" viewBox="0 0 40 40" fill="none">
+          <circle cx="10" cy="20" r="4" stroke="#B8974A" stroke-width="1.2"/>
+          <circle cx="30" cy="10" r="4" stroke="#B8974A" stroke-width="1.2"/>
+          <circle cx="30" cy="30" r="4" stroke="#B8974A" stroke-width="1.2"/>
+          <path d="M14 20 L26 12 M14 20 L26 28" stroke="#B8974A" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <h3>Investor Network</h3>
+        <p>An extensive, curated network of PEs, VCs, family offices, institutional investors, and HNIs built through years of deal origination and transaction execution across sectors.</p>
+        <span class="expertise-tag">→ PE · VC · Family Offices</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="about-wrap">
+      <div class="about-left">
+        <div class="section-label">About</div>
+        <h2 class="section-heading">The <em>Philosophy</em><br>Behind the Practice</h2>
+        <p class="section-sub">Capital isn't just transacted — it's architected. Every mandate begins with deep understanding of both the business and the market it operates in.</p>
+
+        <div class="credentials-list">
+          <div class="credential-item">
+            <div class="credential-bullet"></div>
+            <div class="credential-text"><strong>Chartered Accountant (ICAI)</strong> — Institute of Chartered Accountants of India</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-bullet"></div>
+            <div class="credential-text"><strong>~3 Years</strong> of specialised experience in capital markets and transaction advisory</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-bullet"></div>
+            <div class="credential-text"><strong>FinGuide</strong> — Driving financial literacy and access to institutional-grade advisory</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-bullet"></div>
+            <div class="credential-text">Deep network spanning <strong>PE/VC firms, family offices, institutions</strong>, and corporates</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-bullet"></div>
+            <div class="credential-text">Based in <strong>Surat, Gujarat</strong> — serving clients across India</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <p>
+          As a <strong>Chartered Accountant with a specialisation in capital markets</strong>, I work at the intersection where ambitious companies meet institutional-grade capital. My practice is built on the belief that access to the right capital — at the right structure, at the right time — is a fundamental growth enabler.
+        </p>
+        <p>
+          Over three years of focused execution across <strong>PE/VC fundraises, SME and Main Board IPOs, platform migrations, and FPOs</strong>, I have developed a methodology that treats every transaction as unique — because it is. Cookie-cutter approaches don't serve founder ambitions or investor mandates.
+        </p>
+        <p>
+          The <strong>FinGuide platform</strong> extends this commitment beyond transactions — making high-quality financial guidance accessible to a broader audience, demystifying capital markets for the next generation of business builders.
+        </p>
+        <p>
+          Whether you're a growth-stage company looking for your first institutional round, or a listed SME eyeing the Main Board — I bring the network, the structure, and the conviction to get you there.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="section-inner">
+    <div class="section-label">How I Work</div>
+    <h2 class="section-heading">Services &<br><em>Mandates</em></h2>
+    <p class="section-sub">From the first strategy conversation to transaction close — structured, committed advisory across the capital lifecycle.</p>
+
+    <div class="services-list">
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <div class="service-content">
+          <h3>Fundraise Advisory</h3>
+          <p>Strategic and execution support for private fundraises — investor identification, pitch deck structuring, financial modelling, due diligence management, term sheet negotiation, and close.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <div class="service-content">
+          <h3>IPO Management</h3>
+          <p>End-to-end IPO advisory — from pre-IPO structuring and DRHP preparation through SEBI filings, roadshows, anchor investor engagement, and successful listing on BSE SME, NSE Emerge, or Main Board.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <div class="service-content">
+          <h3>SME to Main Board Migration</h3>
+          <p>Navigating the regulatory and investor relations journey from SME platforms to Main Board — compliance structuring, investor communication strategy, and institutional positioning.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">04</div>
+        <div class="service-content">
+          <h3>Capital Structure Advisory</h3>
+          <p>Holistic advisory on optimal capital structure — equity vs. debt vs. hybrid instruments, dilution management, valuation defence, and long-term capital planning aligned to business milestones.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">05</div>
+        <div class="service-content">
+          <h3>Investor Relations & Positioning</h3>
+          <p>Building compelling investment narratives, investor decks, and communication frameworks that speak to institutional mandates and drive conviction at the investment committee level.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">06</div>
+        <div class="service-content">
+          <h3>FPO & Secondary Market Advisory</h3>
+          <p>Follow-on public offering strategy, pricing advisory, underwriting coordination, and secondary transaction structuring for listed entities seeking to optimise their capital base.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect" class="connect-section">
+  <div class="connect-inner">
+    <div class="connect-label">Let's Talk</div>
+    <h2 class="connect-heading">Ready to<br><em>Raise Capital?</em></h2>
+    <p class="connect-sub">Whether you're at ideation stage or preparing for an IPO — the right conversation happens before the mandate is signed. Let's start yours.</p>
+
+    <a href="mailto:tushar@finguide.in" class="connect-email">tushar@finguide.in</a>
+
+    <div class="social-links">
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/catusharsaraf-finguide" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+
+      <!-- Twitter / X -->
+      <a href="https://twitter.com/catusharsaraf" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X / Twitter
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com/catusharsaraf" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        Instagram
+      </a>
+
+      <!-- Linktree -->
+      <a href="https://linktr.ee/catusharsaraf" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M7.953 15.066c-.08.163-.08.324-.08.486.08.973.891 1.78 1.865 1.78.324 0 .648-.08.891-.243l5.84-3.396-8.516 1.373zm10.656-3.963l-5.84-3.396c-.243-.162-.567-.243-.89-.243-.974 0-1.785.808-1.785 1.781 0 .162 0 .324.08.486l8.435 1.372zm-10.736 7.68c.243.162.567.243.891.243.973 0 1.784-.808 1.784-1.781v-6.793c0-.973-.81-1.78-1.784-1.78-.324 0-.648.08-.891.243L2.033 18.14c-.243.163-.324.405-.324.648 0 .405.243.729.567.891l5.597 2.672v-2.509l-5.516-2.591 5.516-3.233zm11.628-13.48L14.904.63c-.243-.162-.567-.243-.891-.243-.973 0-1.784.808-1.784 1.781v2.51l5.516 2.59-5.516 3.233v2.51l5.516-2.591c.324-.162.567-.486.567-.891 0-.243-.08-.486-.324-.648l-5.516-3.234 5.516-3.233v-2.51c-.243 0-.486.08-.73.243z"/></svg>
+        Linktree
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 CA Tushar Saraf. All rights reserved.</div>
+  <div class="footer-brand">Finguide · Capital Markets Advisory</div>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        entry.target.style.transition = 'opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.expertise-card, .service-item, .credential-item').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transitionDelay = `${i * 0.06}s`;
+    observer.observe(el);
+  });
+
+  // Photo fallback — show initials if image fails
+  const img = document.querySelector('.photo-frame img');
+  if (img) {
+    img.onerror = function() {
+      const frame = this.parentElement;
+      this.remove();
+      const placeholder = document.createElement('div');
+      placeholder.style.cssText = `
+        width: 100%; height: 100%;
+        background: linear-gradient(135deg, #2a2520 0%, #1a1714 100%);
+        display: flex; align-items: center; justify-content: center;
+        position: relative; z-index: 1;
+      `;
+      placeholder.innerHTML = `<span style="font-family:'Cormorant Garamond',serif; font-size:5rem; font-weight:300; color:#B8974A; letter-spacing:0.1em;">TS</span>`;
+      frame.insertBefore(placeholder, frame.firstChild);
+    };
+  }
+</script>
+</body>
+</html>
